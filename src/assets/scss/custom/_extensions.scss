@@ -1,0 +1,75 @@
+//Extensions
+
+/*================ Video player ==============*/
+.video-player-wrapper{
+   .video-react{
+      .video-react-big-play-button{
+         border-radius:50%;
+         width:3rem;
+         height:3rem;
+         line-height: 2.75rem;
+         top:45%;
+         left:46%;
+      }
+   }
+   @media(max-width:500px){
+      .table tr td{
+         font-size:0.75rem;
+      }
+   }
+}
+
+/*================ Image Cropper =============*/
+.image-cropper-wrap{
+   .rct-block-content{
+      >div{
+         overflow:hidden;
+      }
+      .cropper-container{
+         &.cropper-bg{
+            width:100% !important;
+         }
+      }
+      @media(max-width:500px){
+         &.crop-wrapper{
+            >div>div:not(.d-flex){
+               height: 250 !important;
+            }
+         }
+         .form-group{
+            display:block !important;
+            text-align:center;
+            .w-30,.w-40{
+               width:100% !important
+            }
+            .form-control-file{
+               width:46% !important;
+               margin:0 auto;
+            }
+         }
+      }
+   }
+}
+
+/*=============== DropZone ================*/
+.dropzone-wrapper{
+   .dropzone{
+      .dz-preview.dz-image-preview{
+         background:transparent !important;
+      }
+      .dz-error-message,.dz-preview.dz-error .dz-error-mark{
+         display:none !important;
+      }
+      .dz-remove{
+         padding:0.25rem;
+         background-color:$danger;
+         color:$white;
+         text-decoration: none;
+         border-radius:0.3125rem;
+         margin-top:1rem;
+         &:hover{
+            text-decoration: none;
+         }
+      }
+   } 
+}
