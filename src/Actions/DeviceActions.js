@@ -10,9 +10,9 @@ import {
 /**
  * Redux Action To Device List
  */
-export const loadDevice = () => ({
+export const loadDevice = (instances) => ({
     type: LOAD_DEVICE,
-    payload: {}
+    payload: {instances}
 })
 
 export const loadDeviceSuccess = () => ({

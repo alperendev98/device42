@@ -1,10 +1,11 @@
 import axios from 'axios'
 
-const address = process.env.REACT_APP_API_ENDPOINT
-const address_doql = address + 'query/?output_type=json&query='
-export const doLoadDevice = () => {
+export const doLoadDevice = (instance) => {
     return new  Promise(function(resolve, reject){
-        
+
+        const address = instance + '/services/data/v1.0/'
+        const address_doql = address + 'query/?output_type=json&query='
+
         const client = axios.create(
             {
                 

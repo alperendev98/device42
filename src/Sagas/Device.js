@@ -16,12 +16,14 @@ import {
  * Load All Device
  */
 
-function* loadDevice() {
+function* loadDevice({ payload }) {
     try {
-        const data = yield call(doLoadDevice)
+        
+        const responses  = yield payload.instances.map(p => call(doLoadDevice, p))
+
         yield all ([
-            yield put( {type: LOAD_DEVICE_SUCCESS, payload:{data}}),
-        ])    
+            yield put( {type: LOAD_DEVICE_SUCCESS, payload:{responses}}),
+        ])
 
     } catch (error) {
         let message = 'Something went wrong'
