@@ -23,7 +23,7 @@ export default (state = INIT_STATE, action) => {
             return { ...state, loading: true };
 
         case LOAD_DEVICE_SUCCESS:
-            return { ...state, loading: false, devices: action.payload.responses };
+            return { ...state, loading: false, devices: action.payload.data };
 
         case LOAD_DEVICE_FAILURE:
             NotificationManager.error(action.payload);

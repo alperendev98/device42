@@ -20,9 +20,10 @@ function* loadDevice({ payload }) {
     try {
         
         const responses  = yield payload.instances.map(p => call(doLoadDevice, p))
+        let data = { 'instances': payload.instances, 'data': responses}
 
         yield all ([
-            yield put( {type: LOAD_DEVICE_SUCCESS, payload:{responses}}),
+            yield put( {type: LOAD_DEVICE_SUCCESS, payload:{data}}),
         ])
 
     } catch (error) {

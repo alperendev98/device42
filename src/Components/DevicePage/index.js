@@ -32,10 +32,11 @@ class DevicePage extends React.Component {
 		console.log('ddd' + JSON.stringify(this.props.devices))
 		if (this.props.devices) {
 
-			const devicesArray = this.props.devices
-
+			const devicesArray = this.props.devices.data
+			const instanceArray = this.props.devices.instances
 			for (var k=0; k < devicesArray.length; k++) {
 				const devices = devicesArray[k]
+				const instance = instanceArray[k]
 				for (var i=0; i < devices.length; i++) {
 					let deviceItem = devices[i]
 	
@@ -64,7 +65,7 @@ class DevicePage extends React.Component {
 					let customer = deviceItem.c_name === null ? '(None)' : deviceItem.c_name
 	
 					let in_service = deviceItem.in_service ? 'true' : 'false'
-					deviceData.push([deviceItem.name, deviceItem.type, deviceItem.service_level, in_service, deviceItem.asset_no, deviceItem.serial_no,
+					deviceData.push([instance, deviceItem.name, deviceItem.type, deviceItem.service_level, in_service, deviceItem.asset_no, deviceItem.serial_no,
 						location,  hardware, deviceItem.o_name, customer])
 				}
 			}	
@@ -76,6 +77,12 @@ class DevicePage extends React.Component {
 	
 	render() {
 		const columns = [ 
+			{
+				name: 'Instance',
+				options: {
+					display: false
+				}
+			},
 			{
 				name: "Name",
 				options: {
