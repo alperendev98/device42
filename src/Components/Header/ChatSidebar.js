@@ -7,8 +7,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-// data
-import users from 'assets/data/chat-app/users';
 
 // helpers
 import { textTruncate } from 'Helpers/helpers';
@@ -23,15 +21,7 @@ const ChatSidebar = () => (
          </Toolbar>
       </AppBar>
       <List>
-         {users.map((user, key) => (
-            <ListItem key={key} button>
-               <Avatar src={user.photo_url} />
-               <ListItemText
-                  primary={user.first_name + ' ' + user.last_name}
-                  secondary={textTruncate(user.last_chat, 16)}
-               />
-            </ListItem>
-         ))}
+         
       </List>
    </div>
 );
