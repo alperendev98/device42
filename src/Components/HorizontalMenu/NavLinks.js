@@ -10,61 +10,61 @@ export default {
     category2: [
         {
             "menu_title": "sidebar.allDevices",
-            "path": "/dashbard/device",
+            "path": "/app/dashboard/data/device",
             "child_routes": null            
         },
         {
             "menu_title": "sidebar.PhysicalDevices",
-            "path": "/horizontal/about-us",
+            "path": "/app/dashboard/data/device",
             "child_routes": null            
         },
         {
             "menu_title": "sidebar.VirtualDevices",
-            "path": "/horizontal/about-us",
+            "path": "/app/dashboard/data/device",
             "child_routes": null            
         },
         {
             "menu_title": "sidebar.BladeDevices",
-            "path": "/horizontal/about-us",
+            "path": "/app/dashboard/data/device",
             "child_routes": null            
         },
         {
             "menu_title": "sidebar.ClusterDevices",
-            "path": "/horizontal/about-us",
+            "path": "/app/dashboard/data/device",
             "child_routes": null            
         },
         {
             "menu_title": "sidebar.UnknownDevices",
-            "path": "/horizontal/about-us",
+            "path": "/app/dashboard/data/device",
             "child_routes": null            
         },
         {
             "menu_title": "sidebar.OtherDevices",
-            "path": "/horizontal/about-us",
+            "path": "/app/dashboard/data/device",
             "child_routes": null            
         },
         {
             "menu_title": "sidebar.Assets",
-            "path": "/horizontal/about-us",
+            "path": "",
             "child_routes": [
                 {
-                    "path": "/app/dashboard/ecommerce",
+                    "path": "/app/dashboard/data/asset",
                     "menu_title": "sidebar.Assets",
                 },
                 {
-                    "path": "/horizontal/dashboard/saas",
+                    "path": "/app/dashboard/data/asset",
                     "menu_title": "sidebar.RackedAssetTemplates"
                 },
                 {
-                    "path": "/agency/dashboard/agency",
+                    "path": "/app/dashboard/data/asset",
                     "menu_title": "sidebar.PatchPanelModels"
                 },
                 {
-                    "path": "/boxed/dashboard/news",
+                    "path": "/app/dashboard/data/asset",
                     "menu_title": "sidebar.PatchPanelModuleModels"
                 },
                 {
-                    "path": "/boxed/dashboard/news",
+                    "path": "/app/dashboard/data/asset",
                     "menu_title": "sidebar.TAPModuleModels"
                 }
             ]
@@ -74,15 +74,15 @@ export default {
             "path": "/horizontal/about-us",
             "child_routes": [
                 {
-                    "path": "/app/dashboard/ecommerce",
+                    "path": "/app/dashboard/data/asset",
                     "menu_title": "sidebar.Asset",
                 },
                 {
-                    "path": "/horizontal/dashboard/saas",
+                    "path": "/app/dashboard/data/device",
                     "menu_title": "sidebar.Device"
                 },
                 {
-                    "path": "/agency/dashboard/agency",
+                    "path": "/app/dashboard/rack",
                     "menu_title": "sidebar.Rack"
                 }
             ]

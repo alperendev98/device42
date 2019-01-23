@@ -22,12 +22,13 @@ module.exports = {
 	"sidebar.PatchPanelModuleModels": "Patch Panel Module Models",
 	"sidebar.TAPModuleModels": "TAP Module Models",
 	"sidebar.Asset": "Asset",
+	"sidebar.asset": "Asset",
 	"sidebar.Device": "Device",
 	"sidebar.Rack": "Rack",
 	"sidebar.MobileView": "Mobile View",
 	
 	"device.maintitle": 'Select Device to view',
-
+	"asset.maintitle": "Select Asset to view",
 	"sidebar.app": "App",
 	"sidebar.news":"News",
 	"sidebar.horizontal": "Horizontal",

@@ -65,7 +65,7 @@ class LanguageProvider extends Component {
 						<div className="dropdown-content">
 							<div className="dropdown-top d-flex justify-content-between rounded-top bg-primary">
 									<span className="text-white font-weight-bold">Languages</span>
-									<Badge color="warning">3 NEW</Badge>
+									<Badge color="warning"></Badge>
 							</div>
 							<Scrollbars className="rct-scroll" autoHeight autoHeightMin={100} autoHeightMax={280}>
 								<ul className="list-unstyled mb-0 dropdown-list">

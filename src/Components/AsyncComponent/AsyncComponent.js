@@ -8,10 +8,10 @@ import Loadable from 'react-loadable';
 // rct page loader
 import RctPageLoader from 'Components/RctPageLoader/RctPageLoader';
 
-const DeviceComponent = Loadable({
-	loader: () => import("Container/DeviceContainer"),
+const DataComponent = Loadable({
+	loader: () => import("Container/DataContainer"),
 	loading: () => <RctPageLoader />,
-});
+});;
 
 const AsyncUserWidgetComponent = Loadable({
 	loader: () => import("Routes/widgets/user-widgets"),
@@ -30,12 +30,6 @@ const AsyncGeneralWidgetsComponent = Loadable({
 
 const AsyncPromoWidgetsComponent = Loadable({
 	loader: () => import("Routes/widgets/promo-widgets"),
-	loading: () => <RctPageLoader />,
-});
-
-// chat app
-const AsyncChatComponent = Loadable({
-	loader: () => import("Routes/chat"),
 	loading: () => <RctPageLoader />,
 });
 
@@ -266,12 +260,11 @@ const AsyncAdvanceUIAutoCompleteComponent = Loadable({
 });
 
 export {
-	DeviceComponent,
+	DataComponent,
 	AsyncUserWidgetComponent,
 	AsyncUserChartsComponent,
 	AsyncGeneralWidgetsComponent,
 	AsyncPromoWidgetsComponent,
-	AsyncChatComponent,
 	AsyncGalleryComponent,
 	AsyncFeedbackComponent,
 	AsyncReportComponent,

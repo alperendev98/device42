@@ -5,11 +5,11 @@ import { all } from 'redux-saga/effects';
 
 // sagas
 import authSagas from './Auth';
-import deviceSagas from './Device'
+import dataSagas from './Data'
 
 export default function* rootSaga(getState) {
     yield all([
         authSagas(),
-        deviceSagas(),
+        dataSagas(),
     ]);
 }
