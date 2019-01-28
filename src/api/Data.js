@@ -1,5 +1,5 @@
 import axios from 'axios'
-import config from 'config.json';
+import config from 'config';
 
 export const doLoadData = (instance, doql) => {
     return new  Promise(function(resolve, reject){

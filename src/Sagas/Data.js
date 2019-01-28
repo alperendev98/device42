@@ -1,16 +1,13 @@
 /**
  * Device Sagas
  */
-import config from 'config.json';
+import config from 'config';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 
 import {
-    LOAD_DEVICE,
-    LOAD_DEVICE_SUCCESS,
-    LOAD_DEVICE_FAILURE,
-    LOAD_ASSET,
-    LOAD_ASSET_SUCCESS,
-    LOAD_ASSET_FAILURE,
+    LOAD_DATA,
+    LOAD_DATA_SUCCESS,
+    LOAD_DATA_FAILURE,    
 } from 'Actions/types';
 
 import {
@@ -20,35 +17,36 @@ import {
  * Load All Device
  */
 
-function* loadDevice({ payload }) {
+ import {getDoql} from 'Util/TableColumn'
+
+function* loadData({ payload }) {
     try {
+        let doql = getDoql(payload.type)
         
-        const responses  = yield payload.instances.map(p => call(doLoadData, p, config.doql_divice_all))
-        let data = { 'instances': payload.instances, 'data': responses}
+        const responses  = yield payload.instances.map(p => call(doLoadData, p, doql))
+        
+        let data = [] 
+        for (let i = 0; i < payload.instances.length; i++) {
+            let item = responses[i]
+            for (let j = 0; j < item.length; j ++) {
+                let subitem = Object.values(item[j])
+                
+                let subdata =[]
+
+                subdata.push(payload.instances[i])
+                subdata = subdata.concat(subitem)
+
+                data.push(subdata)
+            }
+        }
 
         yield all ([
-            yield put( {type: LOAD_DEVICE_SUCCESS, payload:{data}}),
+            yield put( {type: LOAD_DATA_SUCCESS, payload:{data}}),
         ])
 
     } catch (error) {
         let message = 'Something went wrong'
-        yield put( {type: LOAD_DEVICE_FAILURE, payload: message})
-    }
-}
-
-function* loadAsset({ payload }) {
-    try {
-        
-        const responses  = yield payload.instances.map(p => call(doLoadData, p, config.doql_assets))
-        let data = { 'instances': payload.instances, 'data': responses}
-
-        yield all ([
-            yield put( {type: LOAD_ASSET_SUCCESS, payload:{data}}),
-        ])
-
-    } catch (error) {
-        let message = 'Something went wrong'
-        yield put( {type: LOAD_ASSET_FAILURE, payload: message})
+        yield put( {type: LOAD_DATA_FAILURE, payload: message})
     }
 }
 
@@ -57,7 +55,6 @@ function* loadAsset({ payload }) {
  */
 export default function* rootSaga() {
     yield all([
-        takeEvery(LOAD_DEVICE, loadDevice),
-        takeEvery(LOAD_ASSET, loadAsset),
+        takeEvery(LOAD_DATA, loadData),
     ]);
 }

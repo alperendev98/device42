@@ -5,13 +5,9 @@
 /**
  * Device Action
  */
-export const LOAD_DEVICE = 'LOAD_DEVICE';
-export const LOAD_DEVICE_SUCCESS = 'LOAD_DEVICE_SUCCESS';
-export const LOAD_DEVICE_FAILURE = 'LOAD_DEVICE_FAILURE';
-
-export const LOAD_ASSET = 'LOAD_ASSET'
-export const LOAD_ASSET_SUCCESS = 'LOAD_ASSET_SUCCESS'
-export const LOAD_ASSET_FAILURE = 'LOAD_ASSET_FAILURE'
+export const LOAD_DATA = 'LOAD_DATA';
+export const LOAD_DATA_SUCCESS = 'LOAD_DATA_SUCCESS';
+export const LOAD_DATA_FAILURE = 'LOAD_DATA_FAILURE';
 
 /* -----  ----- */
 export const COLLAPSED_SIDEBAR = 'COLLAPSED_SIDEBAR';

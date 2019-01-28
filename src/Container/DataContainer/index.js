@@ -3,21 +3,18 @@ import DataPage from "Components/DataPage";
 
 // redux action 
 import {
-	loadAsset,
-	loadDevice,
+	loadData,
 } from 'Actions'
 
 // map state to props
-const mapStateToProps = ({ authUser, allAsset, allDevice }) => {
+const mapStateToProps = ({ authUser, allData }) => {
 	const { user } = authUser;
-	const { assets } = allAsset
-	const { devices } = allDevice
-	return { user, assets, devices }
+	const { data } = allData
+	return { user, data }
 }
 
 const DataContainer = connect(mapStateToProps, {
-	loadAsset,
-	loadDevice,
+	loadData,
 })(DataPage);
 
 export default DataContainer

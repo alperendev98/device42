@@ -29,8 +29,8 @@ class NavMenuItem extends Component {
                 {menu.child_routes !== null ?
                     <Fragment>
                         <div className="nav-link">
-                            <i className={menu.menu_icon}></i>
-                            <IntlMessages id={menu.menu_title} />
+                            <i className={menu.icon}></i>
+                            <IntlMessages id={menu.title} />
                         </div>
                         <ul className={classnames("list-unstyled sub-menu-child", { 'deep-level': menu.child_routes.length > 10 })}>
                             {menu.child_routes.map((subMenu, subKey) => {
@@ -38,7 +38,7 @@ class NavMenuItem extends Component {
                                     return (
                                         <li className='nav-item' key={subKey}>
                                             <NavLink to={subMenu.path} className="nav-link no-arrow" activeClassName="active">
-                                                <IntlMessages id={subMenu.menu_title} />
+                                                <IntlMessages id={subMenu.title} />
                                             </NavLink>
                                         </li>
                                     )
@@ -46,13 +46,13 @@ class NavMenuItem extends Component {
                                 return (
                                     <li className='nav-item' key={subKey}>
                                         <div className="nav-link">
-                                            <IntlMessages id={subMenu.menu_title} />
+                                            <IntlMessages id={subMenu.title} />
                                         </div>
                                         <ul className="list-unstyled sub-menu-sub-child">
                                             {subMenu.child_routes.map((nestedMenu, nestedKey) => (
                                                 <li className="nav-item" key={nestedKey}>
                                                     <NavLink to={nestedMenu.path} className="nav-link" activeClassName="active">
-                                                        <IntlMessages id={nestedMenu.menu_title} />
+                                                        <IntlMessages id={nestedMenu.title} />
                                                     </NavLink>
                                                 </li>
                                             ))}
@@ -63,8 +63,8 @@ class NavMenuItem extends Component {
                         </ul>
                     </Fragment> :
                     <NavLink to={menu.path} className="nav-link no-arrow">
-                        <i className={menu.menu_icon}></i>
-                        <IntlMessages id={menu.menu_title} />
+                        <i className={menu.icon}></i>
+                        <IntlMessages id={menu.title} />
                     </NavLink>
                 }
             </li>

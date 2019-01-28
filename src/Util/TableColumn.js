@@ -1,84 +1,72 @@
+
+import config from 'config';
 export const getColumnByType = (type) => {
-    if (type === 'asset') {
-        return [ 
-			{
-				name: 'Instance',
-				options: {
-					display: false
+    let result = config.menus.map((menu, key) => {
+		if (menu.submenus) {
+			return menu.submenus.map((submenu, key) => {
+
+				if (submenu.child_routes) {
+					return submenu.child_routes.map((child_route) => {
+						if (child_route.path === ('/app/dashboard/data/' + type)) {
+							return child_route.column
+						}else {
+							return null
+						}	
+					}).filter((e) => (
+						e !== null
+					))[0]	
+				}else {
+					if (submenu.path === ('/app/dashboard/data/' + type)) {
+						return submenu.column
+					}else {
+						return null
+					}
 				}
-			},
-			{
-				name: "ID",
-				options: {
-					filter: false
+			}).filter((e) => (
+				e !== null
+			))[0]
+		}else {
+			return null
+		}
+	}).filter((e) => (
+		e !== null
+	))[0]
+	
+	return result
+}
+
+export const getDoql = (type) => {
+    let result = config.menus.map((menu) => {
+		if (menu.submenus) {
+			return menu.submenus.map((submenu) => {
+				if (submenu.child_routes) {
+					return  submenu.child_routes.map((child_route) => {
+						let path = '/app/dashboard/data/' + type
+						
+						if (child_route.path === path) {
+							return child_route.doql
+						}else {
+							return 'noql'
+						}	
+					})
+				}else {
+					let path = '/app/dashboard/data/' + type
+					
+					if (submenu.path === path) {
+						return submenu.doql
+					}else {
+						return 'noql'
+					}
 				}
-			},
-			{
-				name: "Name",
-				options: {
-					filter: false
-				}
-			}, 
-			"Service Level", "Type", 
-			{
-				name: 'Object Category',
-				options: {
-					display: false
-				}
-			},
-			{
-				name: "Location",
-				options: {
-					filter: false
-				}
-			},
-			"Building", 
-			{
-				name: "Serial #",
-				options: {
-					filter: false
-				}
-			},
-			{
-				name: "Asset #",
-				options: {
-					filter: false
-				}
-			},
-			{
-				name: "Vender",
-				options: {
-					filter: false
-				}
-			},
-			{
-				name: "Image",
-				options: {
-					filter: false
-				}
-			},
-		];
-    }else if (type === 'device') {
-        return [ 
-			{
-				name: 'Instance',
-				options: {
-					display: false
-				}
-			},
-			{
-				name: "Name",
-				options: {
-					filter: false
-				}
-			}, 
-			"Type", "Service Level", "In Service", 
-			{
-				name: "Asset #",
-				options: {
-					filter: false
-				}
-			},
-			"Serial #", "Location", "Hardware", "OS", "Customer"];
-    }
+				
+			})
+		}else {
+			return 'noql'
+		}
+	})
+
+	var result1 = String(result)
+	result1 = result1.split("noql,").join("")
+	result1 =result1.split(",noql").join("")
+	return result1
 }
