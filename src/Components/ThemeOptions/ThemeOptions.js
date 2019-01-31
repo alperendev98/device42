@@ -3,16 +3,7 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import classnames from 'classnames';
-import { DropdownToggle, DropdownMenu, Dropdown } from 'reactstrap';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { Scrollbars } from 'react-custom-scrollbars';
-import Switch from '@material-ui/core/Switch';
-import Tooltip from '@material-ui/core/Tooltip';
 import $ from 'jquery';
-import AppConfig from 'Constants/AppConfig';
-
-import AgencyLayoutBgProvider from "./AgencyLayoutBgProvider";
 
 // redux actions
 import {
@@ -25,9 +16,6 @@ import {
     changeThemeColor,
     toggleDarkSidebar
 } from 'Actions';
-
-// intl messages
-import IntlMessages from 'Util/IntlMessages';
 
 class ThemeOptions extends Component {
 
@@ -143,155 +131,9 @@ class ThemeOptions extends Component {
     }
 
     render() {
-        const {
-            themes,
-            activeTheme,
-            enableSidebarBackgroundImage,
-            sidebarBackgroundImages,
-            selectedSidebarImage,
-            miniSidebar,
-            darkMode,
-            boxLayout,
-            rtlLayout,
-            navCollapsed,
-            isDarkSidenav
-        } = this.props;
         return (
             <div className="fixed-plugin">
-                {AppConfig.enableThemeOptions &&
-                    <Dropdown isOpen={this.state.themeOptionPanelOpen} toggle={() => this.toggleThemePanel()}>
-                        <DropdownToggle className="bg-primary">
-                            <Tooltip title="Theme Options" placement="left">
-                                <i className="zmdi zmdi-settings font-2x tour-step-6 spin-icon"></i>
-                            </Tooltip>
-                        </DropdownToggle>
-                        <DropdownMenu>
-                            <Scrollbars className="rct-scroll" autoHeight autoHeightMin={100} autoHeightMax={530} autoHide autoHideDuration={100}>
-                                <ul className="list-unstyled text-center mb-0">
-                                    <li className="header-title mb-10">
-                                        <IntlMessages id="themeOptions.themeColor" />
-                                    </li>
-                                    <li className="adjustments-line mb-10">
-                                        <div>
-                                            <div>
-                                                {themes.map((theme, key) => (
-                                                    <Tooltip title={theme.name} placement="top" key={key}>
-                                                        <img
-                                                            onClick={() => this.changeThemeColor(theme)}
-                                                            src={require(`assets/img/${theme.name}-theme.png`)}
-                                                            alt="theme"
-                                                            className={classnames('img-fluid mr-5', { 'active': theme.id === activeTheme.id })}
-                                                        />
-                                                    </Tooltip>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li className="header-title sidebar-overlay">
-                                        <IntlMessages id="themeOptions.sidebarOverlay" />
-                                    </li>
-                                    <li className="sidebar-color">
-                                        <IntlMessages id="themeOptions.sidebarLight" />
-                                        <FormControlLabel
-                                            className="m-0"
-                                            control={
-                                                <Switch
-                                                    checked={isDarkSidenav}
-                                                    onClick={() => this.props.toggleDarkSidebar()}
-                                                    color="primary"
-                                                    className="switch-btn"
-                                                />
-                                            }
-                                        />
-                                        <IntlMessages id="themeOptions.sidebarDark" />
-                                    </li>
-                                    <li className="header-title sidebar-img-check">
-                                        <FormControlLabel
-                                            className="m-0"
-                                            control={
-                                                <Switch
-                                                    checked={enableSidebarBackgroundImage}
-                                                    onClick={() => this.props.toggleSidebarImage()}
-                                                    color="primary"
-                                                    className="switch-btn"
-                                                />
-                                            }
-                                            label={<IntlMessages id="themeOptions.sidebarImage" />}
-                                        />
-                                    </li>
-                                    {enableSidebarBackgroundImage &&
-                                        <li className="background-img">
-                                            {sidebarBackgroundImages.map((sidebarImage, key) => (
-                                                <div className={classnames('img-holder', { 'active': selectedSidebarImage === sidebarImage })}  key={key} onClick={() => this.setSidebarBgImage(sidebarImage)}>
-                                                    <img src={sidebarImage} alt="sidebar" className="img-fluid" width="" height="" />
-                                                </div>
-                                            ))}
-                                        </li>
-                                    }
-                                </ul>
-                                <AgencyLayoutBgProvider />
-                                <ul className="list-unstyled mb-0 p-10 app-settings">
-                                    <li className="header-title mb-10">
-                                        <IntlMessages id="themeOptions.appSettings" />
-                                    </li>
-                                    <li className="header-title mini-sidebar-option">
-                                        <FormControlLabel
-                                            control={
-                                                <Switch
-                                                    disabled={navCollapsed}
-                                                    checked={miniSidebar}
-                                                    onChange={(e) => this.miniSidebarHanlder(e.target.checked)}
-                                                    className="switch-btn"
-                                                />
-                                            }
-                                            label={<IntlMessages id="themeOptions.miniSidebar" />}
-                                            className="m-0"
-                                        />
-                                    </li>
-                                    <li className="header-title box-layout-option">
-                                        <FormControlLabel
-                                            control={
-                                                <Switch
-                                                    checked={boxLayout}
-                                                    onChange={(e) => this.boxLayoutHanlder(e.target.checked)}
-                                                    className="switch-btn"
-                                                />
-                                            }
-                                            label={<IntlMessages id="themeOptions.boxLayout" />}
-                                            className="m-0"
-                                        />
-                                    </li>
-                                    <li className="header-title">
-                                        <FormControlLabel
-                                            control={
-                                                <Switch
-                                                    checked={rtlLayout}
-                                                    onChange={(e) => this.rtlLayoutHanlder(e.target.checked)}
-                                                    className="switch-btn"
-                                                />
-                                            }
-                                            label={<IntlMessages id="themeOptions.rtlLayout" />}
-                                            className="m-0"
-                                        />
-                                    </li>
-                                    <li className="header-title">
-                                        <FormControlLabel
-                                            control={
-                                                <Switch
-                                                    checked={darkMode}
-                                                    onChange={(e) => this.darkModeHanlder(e.target.checked)}
-                                                    className="switch-btn"
-                                                />
-                                            }
-                                            label={<IntlMessages id="themeOptions.darkMode" />}
-                                            className="m-0"
-                                        />
-                                    </li>
-                                </ul>
-                            </Scrollbars>
-                        </DropdownMenu>
-                    </Dropdown>
-                }
+                
             </div>
         );
     }

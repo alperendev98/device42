@@ -4,29 +4,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
+import { NotificationContainer } from 'react-notifications'
 // rct theme provider
 import RctThemeProvider from './RctThemeProvider';
 
 //Horizontal Layout
 import HorizontalLayout from './HorizontalLayout';
 
-//Agency Layout
-import AgencyLayout from './AgencyLayout';
-
 //Main App
 import RctDefaultLayout from './DefaultLayout';
 
-// boxed layout
-import RctBoxedLayout from './RctBoxedLayout';
-
 // app signin
-import AppSignIn from './SigninFirebase';
-import AppSignUp from './SignupFirebase';
+import AppSignIn from './Signin';
+import AppSignUp from './Signup';
 
 // async components
 import {
-	AsyncSessionLoginComponent,
-	AsyncSessionRegisterComponent,
 	AsyncSessionLockScreenComponent,
 	AsyncSessionForgotPasswordComponent,
 	AsyncSessionPage404Component,
@@ -78,19 +71,15 @@ class App extends Component {
 		}
 		return (
 			<RctThemeProvider>
-				{/* <NotificationContainer /> */}
+				<NotificationContainer />
 				<InitialPath
 					path={`${match.url}app`}
 					authUser={user}
 					component={RctDefaultLayout}
 				/>
 				<Route path="/dashboard" component={HorizontalLayout} />
-				<Route path="/agency" component={AgencyLayout} />
-				<Route path="/boxed" component={RctBoxedLayout} />
 				<Route path="/signin" component={AppSignIn} />
 				<Route path="/signup" component={AppSignUp} />
-				<Route path="/session/login" component={AsyncSessionLoginComponent} />
-				<Route path="/session/register" component={AsyncSessionRegisterComponent} />
 				<Route path="/session/lock-screen" component={AsyncSessionLockScreenComponent} />
 				<Route
 					path="/session/forgot-password"

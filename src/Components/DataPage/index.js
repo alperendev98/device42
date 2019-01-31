@@ -3,8 +3,8 @@
  */
 import React from 'react';
 import MUIDataTable from "mui-datatables"
+import RctSectionLoader from 'Components/RctSectionLoader/RctSectionLoader';
 
-import config from 'config';
 import {getColumnByType} from 'Util/TableColumn'
 class DataPage extends React.Component {
 	constructor() {
@@ -15,14 +15,29 @@ class DataPage extends React.Component {
 			currentType: '',
 		}
 	}
+
+	componentDidMount() {
+		if (this.state.currentType !== this.props.match.params.type) {
+			this.loadData(this.props.match.params.type)
+			
+		}	
+	}
 	
 	componentWillReceiveProps(newProps) {
 
-		if (this.state.currentType !== newProps.match.params.type) {
-			this.setState({currentType: newProps.match.params.type})
-			this.props.loadData(config.instances, newProps.match.params.type)
+		if (this.state.currentType !== newProps.match.params.type && !newProps.loading) {
+			this.loadData(newProps.match.params.type)
+			
 		}
 		
+	}
+
+	loadData = (type) => {
+		this.setState({currentType: type})
+
+		if (localStorage.getItem('instances')) {
+			this.props.loadData(JSON.parse(localStorage.getItem('instances')), type)
+		}
 	}
 	render() {
 		const columns = getColumnByType(this.props.match.params.type)
@@ -43,6 +58,10 @@ class DataPage extends React.Component {
 						options={options}
 					/> : ''}
 				</div>
+
+				{this.props.loading &&
+					<RctSectionLoader />
+				}
 			</div>
 		);
 	}

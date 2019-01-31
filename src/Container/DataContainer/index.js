@@ -9,8 +9,8 @@ import {
 // map state to props
 const mapStateToProps = ({ authUser, allData }) => {
 	const { user } = authUser;
-	const { data } = allData
-	return { user, data }
+	const { data, loading } = allData
+	return { user, data, loading }
 }
 
 const DataContainer = connect(mapStateToProps, {

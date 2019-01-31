@@ -1,7 +1,6 @@
 /**
  * Device Sagas
  */
-import config from 'config';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 
 import {
@@ -33,7 +32,7 @@ function* loadData({ payload }) {
                 
                 let subdata =[]
 
-                subdata.push(payload.instances[i])
+                subdata.push(payload.instances[i].name)
                 subdata = subdata.concat(subitem)
 
                 data.push(subdata)

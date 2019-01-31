@@ -6,6 +6,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import { Helmet } from "react-helmet";
 
 import {
+    AsyncSettingComponent,
     DataComponent
 } from "Components/AsyncComponent/AsyncComponent"
 const Dashboard = ({ match }) => (
@@ -16,7 +17,8 @@ const Dashboard = ({ match }) => (
         </Helmet>
         <Switch>
             <Redirect exact from={`${match.url}/`} to={`${match.url}/data/device`} />
-            <Route path={`${match.url}/data/:type`} component={DataComponent} />            
+            <Route path={`${match.url}/data/:type`} component={DataComponent} />
+            <Route path={`${match.url}/setting`} component={AsyncSettingComponent} />
         </Switch>
     </div>
 );

@@ -1,17 +1,16 @@
 import axios from 'axios'
-import config from 'config';
 
 export const doLoadData = (instance, doql) => {
     return new  Promise(function(resolve, reject){
 
-        const address_doql = instance + '/services/data/v1.0/query/?output_type=json&query='
+        const address_doql = instance.address + '/services/data/v1.0/query/?output_type=json&query='
 
         const client = axios.create(
             {
                 
                 auth: {
-                    username: config.username,
-                    password: config.password
+                    username: instance.username,
+                    password: instance.password
                 },
                 headers: {
                     "Content-Type": "application/json"

@@ -71,10 +71,10 @@ class Notifications extends Component {
 									</div>
 									<span className="text-muted fs-12 d-block">{notification.notification}</span>
 									<Button className="btn-xs mr-10">
-										<i className="zmdi zmdi-mail-reply mr-2"></i> <IntlMessages id="button.reply" />
+										<i className="zmdi zmdi-mail-reply mr-2"></i> <IntlMessages id="common.reply" />
 									</Button>
 									<Button className="btn-xs">
-										<i className="zmdi zmdi-thumb-up mr-2"></i> <IntlMessages id="button.like" />
+										<i className="zmdi zmdi-thumb-up mr-2"></i> <IntlMessages id="common.like" />
 									</Button>
 								</div>
 								</div>
@@ -89,7 +89,7 @@ class Notifications extends Component {
 						color="primary"
 						className="mr-10 btn-xs bg-primary"
 					>
-						<IntlMessages id="button.viewAll" />
+						<IntlMessages id="common.viewAll" />
 					</Button>
 				</div>
         </DropdownMenu>

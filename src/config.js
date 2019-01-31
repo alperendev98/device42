@@ -1,23 +1,23 @@
 export default {
-    username : "admin",
-    password : "adm!nd42",
-    instances: [
-        "http://151.181.77.119", 
-        "http://151.181.77.121"
-    ],
+    // username : "admin",
+    // password : "adm!nd42",
+    // instances: [
+    //     "http://151.181.77.119", 
+    //     "http://151.181.77.121"
+    // ],
 
     menus: [
         {
             icon: "zmdi zmdi-view-dashboard",
-            title: "sidebar.DataCenter",
+            title: "dashboard.DataCenter",
             submenus: null
         },
         {
             icon: "zmdi zmdi-devices",
-            title: "sidebar.Devices",
+            title: "dashboard.Devices",
             submenus: [
                 {
-                    title: "sidebar.allDevices",
+                    title: "dashboard.allDevices",
                     icon: "zmdi zmdi-devices",
                     path: "/app/dashboard/data/device",
                     child_routes: null,
@@ -45,11 +45,11 @@ export default {
                         "Serial #", "Location", "Hardware", "OS", "Customer"]
                 },
                 {
-                    title: "sidebar.Assets",
+                    title: "dashboard.Assets",
                     path: "",
                     child_routes: [
                         {
-                            title: "sidebar.Assets",
+                            title: "dashboard.Assets",
                             path: "/app/dashboard/data/asset",
                             doql: "select a.asset_pk, a.name, a.service_level_name, t.name as t_name, o.name as o_name, CONCAT(ra.name, r.name, b.name) as location,  b.name as b_name, a.serial_no, a.asset_no,  v.name as v_name from view_asset_v1 a left join view_assettype_v1 t on a.assettype_fk = t.assettype_pk left join view_vendor_v1 v on v.vendor_pk = a.vendor_fk left join view_building_v1 b on a.calculated_building_fk = b.building_pk  left join view_room_v1 r on a.calculated_room_fk = r.room_pk left join view_rack_v1 ra on ra.rack_pk = a.calculated_rack_fk left join view_objectcategory_v1 o on a.objectcategory_fk = o.objectcategory_pk order by a.asset_pk",
                             column: [
@@ -118,7 +118,7 @@ export default {
         },
         {
             icon: "zmdi zmdi zmdi-wifi-alt",
-            title: "sidebar.Network",
+            title: "dashboard.Network",
             submenus: null
         },
     ]
