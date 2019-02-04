@@ -41,11 +41,20 @@ class DataPage extends React.Component {
 	}
 	render() {
 		const columns = getColumnByType(this.props.match.params.type)
-		console.log('resutl' + JSON.stringify(columns))
 		const options = {
 			filterType: 'dropdown',
 			fixedHeader: false,
-			responsive: 'stacked'
+			responsive: 'stacked',
+			print: false,
+			download: false,
+			onRowClick:(rowData, rowMeta) => {
+				let instanceAddress = rowData[1]
+				let itemId = rowData[2]
+				if (instanceAddress) {
+					let url = instanceAddress + '/admin/rackraj/' + this.state.currentType +  '/' + itemId
+					window.open(url, '_blank')
+				}
+			}
 		};
 		return (
 			<div className="data-table-wrapper">
@@ -53,6 +62,7 @@ class DataPage extends React.Component {
 				<div className="table-responsive">
 				
 					{this.props.data && columns !== null ? <MUIDataTable
+						title={this.state.currentType}
 						data={this.props.data}
 						columns={columns}
 						options={options}

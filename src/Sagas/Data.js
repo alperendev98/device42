@@ -32,7 +32,8 @@ function* loadData({ payload }) {
                 
                 let subdata =[]
 
-                subdata.push(payload.instances[i].name)
+                subdata.push(payload.instances[i].name, payload.instances[i].address)
+
                 subdata = subdata.concat(subitem)
 
                 data.push(subdata)

@@ -21,12 +21,26 @@ export default {
                     icon: "zmdi zmdi-devices",
                     path: "/app/dashboard/data/device",
                     child_routes: null,
-                    doql: "select d.name, d.type, d.service_level, d.in_service, d.asset_no, d.serial_no, CONCAT(ra.name, r.name, b.name) as location, CONCAT(h.name, ', ', v.name) as hardware, o.name as o_name, c.name as c_name from view_device_v1 d left join view_hardware_v1 h on h.hardware_pk = d.hardware_fk left join view_vendor_v1 v on v.vendor_pk = h.vendor_fk left join view_building_v1 b on d.calculated_building_fk = b.building_pk left join view_room_v1 r on d.calculated_room_fk = r.room_pk left join view_os_v1 o on o.os_pk = d.os_fk left join view_customer_v1 c on c.customer_pk = d.customer_fk left join view_rack_v1 ra on ra.rack_pk = d.calculated_rack_fk order by d.name",
+                    doql: "select d.device_pk ,d.name, d.type, d.service_level, d.in_service, d.asset_no, d.serial_no, CONCAT(ra.name, r.name, b.name) as location, CONCAT(h.name, ', ', v.name) as hardware, o.name as o_name, c.name as c_name from view_device_v1 d left join view_hardware_v1 h on h.hardware_pk = d.hardware_fk left join view_vendor_v1 v on v.vendor_pk = h.vendor_fk left join view_building_v1 b on d.calculated_building_fk = b.building_pk left join view_room_v1 r on d.calculated_room_fk = r.room_pk left join view_os_v1 o on o.os_pk = d.os_fk left join view_customer_v1 c on c.customer_pk = d.customer_fk left join view_rack_v1 ra on ra.rack_pk = d.calculated_rack_fk order by d.name",
                     column : [ 
                         {
                             name: 'Instance',
                             options: {
                                 display: false
+                            }
+                        },
+                        {
+                            name: 'Address',
+                            options: {
+                                display: false,
+                                filter: false
+                            }
+                        },
+                        {
+                            name: "ID",
+                            options: {
+                                display: false,
+                                filter: false
                             }
                         },
                         {
@@ -57,6 +71,13 @@ export default {
                                     name: 'Instance',
                                     options: {
                                         display: false
+                                    }
+                                },
+                                {
+                                    name: 'Address',
+                                    options: {
+                                        display: false,
+                                        filter: false
                                     }
                                 },
                                 {

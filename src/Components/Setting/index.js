@@ -312,27 +312,7 @@ export default class Setting extends Component {
 								))}
 							</tbody>
 							<tfoot className="border-top">
-								<tr>
-									<td colSpan="100%">
-										<Pagination className="mb-0 py-10 px-10">
-											<PaginationItem>
-												<PaginationLink previous href="#" />
-											</PaginationItem>
-											<PaginationItem active>
-												<PaginationLink >1</PaginationLink>
-											</PaginationItem>
-											<PaginationItem>
-												<PaginationLink >2</PaginationLink>
-											</PaginationItem>
-											<PaginationItem>
-												<PaginationLink >3</PaginationLink>
-											</PaginationItem>
-											<PaginationItem>
-												<PaginationLink next  />
-											</PaginationItem>
-										</Pagination>
-									</td>
-								</tr>
+								
 							</tfoot>
 						</table>
 					</div>

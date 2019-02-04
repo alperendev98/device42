@@ -83,7 +83,7 @@ class Header extends Component {
 							
 						</div>
 					
-						<ul className="list-inline mb-0 navbar-left">
+						{/* <ul className="list-inline mb-0 navbar-left">
 							
 							<li className="list-inline-item search-icon d-inline-block">
 								<SearchForm />
@@ -95,13 +95,13 @@ class Header extends Component {
 									onClose={() => this.setState({ isMobileSearchFormVisible: false })}
 								/>
 							</li>
-						</ul>
+						</ul> */}
 					
 					</div>
 					<ul className="navbar-right list-inline mb-0">
 						
-						<LanguageProvider />
-						<Notifications />
+						{/* <LanguageProvider />
+						<Notifications /> */}
 						<li className="list-inline-item setting-icon">
 							<Tooltip title="Settings" placement="bottom">
 								<IconButton aria-label="settings" onClick={() => this.handleSetting()}>
