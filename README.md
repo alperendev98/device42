@@ -1,68 +1,142 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Full Stack React/Express Todo List Boilerplate
 
-## Available Scripts
+#### Technologies Used
+```
+React + 
+Redux + 
+React-router 4 + 
+Redux-Form 6 + 
+SCSS + 
+Webpack 2 +
+NodeJS +
+ExpressJS +
+KnexJS + 
+PostgreSQL
+```
 
-In the project directory, you can run:
+##### FYI
 
-### `npm start`
+* The use of the $ character symbolizes that the following text needs to be entered in the terminal/powershell
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Setup Notes
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+* Install PostgreSQL on your machine if you don't already have it
 
-### `npm test`
+* Attempt running the command $ psql in your terminal/powershell
+ 
+```
+If you try to access psql locally and get an error like this:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+psql: could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
+```
 
-### `npm run build`
+```
+Run this command to start your postgres server:   
+$ pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+```
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Then to make sure you have a database for yourself run this command:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+```
+$ createdb
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Then attempt to run this command:
 
-### `npm run eject`
+```
+$ psql
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* If you see something like this you're good:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+psql (9.6.3)
+Type "help" for help.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+akyunaakish=#
+```
+* Exit from the psql repl with this command:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+$ \q
+```
 
-## Learn More
+* Then create a database locally by running this command:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+$ createdb sitevisit
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Now you should be able to re-enter into psql directly to your new databse:
 
-### Code Splitting
+```
+$ psql sitevisit
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+* If you see something like this you're good:
 
-### Analyzing the Bundle Size
+```
+psql (9.6.3)
+Type "help" for help.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+sitevisit=#
+```
 
-### Making a Progressive Web App
+* Then make sure to create a .env file at the root of your application and update it with your DATABASE_URL containing the name of your database:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+```
+DATABASE_URL=postgres://localhost/sitevisit
+```
 
-### Advanced Configuration
+* Now as long as you have a version of node at least 6.9.5 and npm version at least 5.0.0 you can install the project dependencies in the root directory of this project:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+```
+$ npm install
+```
 
-### Deployment
+* You'll also have to install the knex module globally on your machine:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+```
+$ npm install -g knex
+```
 
-### `npm run build` fails to minify
+* Now you can update the schema of your local database to be compliant with this project:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+$ knex migrate:latest
+```
+
+* You should now be able to run the app. In one terminal/powershell tab or window run this command:
+
+```
+$ npm run client
+```
+
+* In another terminal/powershell tab or window run this command:
+
+```
+$ npm run server
+```
+
+* The client side of the application should now be available in the browser at:
+
+```
+localhost:8080
+```
+
+#### Building dist folder for production
+
+* Set your .env file's NODE_ENV variable equal to production
+
+```
+NODE_ENV=production
+```
+
+* Run the build script
+
+```
+$ npm run build
+```
+
