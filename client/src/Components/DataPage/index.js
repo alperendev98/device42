@@ -44,7 +44,7 @@ class DataPage extends React.Component {
 		const options = {
 			filterType: 'dropdown',
 			fixedHeader: false,
-			responsive: 'stacked',
+			responsive: 'scroll',
 			print: false,
 			download: false,
 			onRowClick:(rowData, rowMeta) => {
