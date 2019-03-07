@@ -34,5 +34,5 @@ app.all('*', (req, res, next) => {
     });
 });
 
-modulges');
+module.exports = app;
          
