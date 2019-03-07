@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-app.use(express.static(dev ? helpers.root('client/build') : helpers.root('dist')));
+app.use(express.static(dev ? helpers.root('client/build') : helpers.root('client/build')));
 app.use(cookieParser());
 
 app.use('/api/v1/instances', instances)
@@ -30,8 +30,9 @@ app.use('/api/v1/users', users)
 
 app.all('*', (req, res, next) => {
     res.sendFile('index.html', {
-        root: dev ? helpers.root('client/build') : helpers.root('dist')
+        root: dev ? helpers.root('client/build') : helpers.root('client/build')
     });
 });
 
-module.exports = app;
+modulges');
+         

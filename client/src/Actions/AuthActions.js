@@ -57,8 +57,9 @@ export const logoutUserFailure = () => ({
     type: LOGOUT_USER_FAILURE
 })
 
-export const loadInstances = () => ({
-    type: LOAD_INSTANCES
+export const loadInstances = (type) => ({
+    type: LOAD_INSTANCES,
+    payload: { type }
 })
 
 export const addNewInstance = (newInstance) => ({

@@ -19,7 +19,7 @@ import {
     signinUserFailure,
     logoutUserSuccess,
     logoutUserFailure,
-    
+    loadData,
 } from 'Actions';
 
 import {
@@ -56,6 +56,7 @@ function* loadInstances({ payload }) {
         const instances = yield call(doLoadInstance, user_id)
         yield all ([
             yield put(loadInstanceSuccess(instances)),
+            yield put(loadData(instances, payload.type)),
         ])
         
     } catch (error) {
@@ -109,7 +110,7 @@ function* signOut() {
  */
 function* createUserWithEmailPassword({ payload }) {
     try {
-        const data = yield call(doRegister, payload.email, payload.password)
+        yield call(doRegister, payload.email, payload.password)
         yield all ([
             yield put( {type: LOGIN_USER, payload:payload}),
         ])

@@ -3,13 +3,8 @@
  */
 import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
-import Checkbox from '@material-ui/core/Checkbox';
 import {
-	Pagination,
-	PaginationItem,
-	PaginationLink,
 	Modal,
 	ModalHeader,
 	ModalBody,
@@ -217,7 +212,7 @@ export default class Setting extends Component {
 	}
 
 	render() {
-		const { loading, selectedInstance, editInstance, selectedinstances } = this.state;
+		const { loading, selectedInstance, editInstance } = this.state;
 		const { instances } = this.props
 		return (
 			<div className="user-management">

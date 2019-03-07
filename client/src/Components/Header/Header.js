@@ -66,7 +66,6 @@ class Header extends Component {
 	}
 
 	render() {
-		const { isMobileSearchFormVisible } = this.state;
 		$('body').click(function () {
 			$('.dashboard-overlay').removeClass('show');
 			$('.dashboard-overlay').addClass('d-none');

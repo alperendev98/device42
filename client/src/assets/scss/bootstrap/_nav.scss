@@ -14,7 +14,7 @@
 .nav-link {
   display: block;
   padding: $nav-link-padding-y $nav-link-padding-x;
-
+  font-size: 11px;
   @include hover-focus {
     text-decoration: none;
   }

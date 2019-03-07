@@ -13,7 +13,7 @@ export const getColumnByType = (type) => {
 							return null
 						}	
 					}).filter((e) => (
-						e !== null
+						e !== undefined && e !== null
 					))[0]	
 				}else {
 					if (submenu.path === ('/app/dashboard/data/' + type)) {
@@ -23,15 +23,16 @@ export const getColumnByType = (type) => {
 					}
 				}
 			}).filter((e) => (
-				e !== null
+				e !== undefined && e !== null
 			))[0]
 		}else {
 			return null
 		}
 	}).filter((e) => (
-		e !== null
+		e !== undefined && e !== null
 	))[0]
-	
+
+	console.log(result)
 	return result
 }
 

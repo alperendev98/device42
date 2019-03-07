@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { Link } from 'react-router-dom';
-import { Form, FormGroup, Input } from 'reactstrap';
+import { FormGroup, Input } from 'reactstrap';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import QueueAnim from 'rc-queue-anim';
 
@@ -19,10 +19,6 @@ import AppConfig from 'Constants/AppConfig';
 import {
 	signinUser,
 } from 'Actions'
-//Auth File
-import Auth from '../Auth/Auth';
-
-const auth = new Auth();
 
 class Signin extends Component {
 

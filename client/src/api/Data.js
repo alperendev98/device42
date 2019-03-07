@@ -24,11 +24,11 @@ export const doLoadData = (instance, doql) => {
         client.get (url)
         .then((response) => {
             console.log('auth success')
-            resolve(response.data) 
+            resolve(response.data)
         })
         .catch(error => {
             console.log('auth fail')
-            reject(error)
+            resolve([])
         })
     })
     

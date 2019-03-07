@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=production node ./server/init.js",
     "client": "cd client && npm start",
-    "server": "./node_modules/.bin/nodemon ./server/init.js",
+    "server": "nodemon ./server/init.js",
     "build": "./node_modules/.bin/webpack -p"
   },
   "keywords": [],

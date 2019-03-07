@@ -16,7 +16,7 @@ import {
  * Load All Device
  */
 
-import {getDoql} from 'Util/TableColumn'
+import {getDoql, getColumnByType} from 'Util/TableColumn'
 
 function* loadData({ payload }) {
     try {
@@ -39,9 +39,9 @@ function* loadData({ payload }) {
                 data.push(subdata)
             }
         }
-
+        const columns = getColumnByType(payload.type)
         yield all ([
-            yield put( {type: LOAD_DATA_SUCCESS, payload:{data}}),
+            yield put( {type: LOAD_DATA_SUCCESS, payload:{data, columns}}),
         ])
 
     } catch (error) {
