@@ -81,7 +81,7 @@
     "react-dnd": "4.0.4",
     "react-dnd-html5-backend": "4.0.4",
     "react-dom": "^16.7.0",
-    "react-draft-wysiwyg": "1.12.13",
+    "react-draft-wysiwyg": "1.14.6",
     "react-dragula": "1.1.17",
     "react-dropzone-component": "^3.2.0",
     "react-helmet": "^5.2.0",
